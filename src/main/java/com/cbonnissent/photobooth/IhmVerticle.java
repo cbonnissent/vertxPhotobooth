@@ -35,8 +35,6 @@ public class IhmVerticle extends AbstractVerticle {
         // Static content
         StaticHandler defaultHandler = StaticHandler.create();
         defaultHandler.setCachingEnabled(false);
-        defaultHandler.setAllowRootFileSystemAccess(true);
-        defaultHandler.setWebRoot("/home/charles/perso/photobooth/src/main/resources/webroot/");
 
         router.route("/*").handler(defaultHandler);
 

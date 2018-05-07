@@ -2,5 +2,6 @@
     "savePath" : "/tmp/photobooth/",
     "nbPicture": 4,
     "http.port": 8080,
-    "printer": "SELPHY-CP1300"
+    "printer": "SELPHY-CP1300",
+    "webCam": "/dev/video1"
 }

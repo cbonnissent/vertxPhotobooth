@@ -33,7 +33,7 @@ public class PictureVerticle extends AbstractVerticle {
             try {
                 vertx.eventBus().publish(MainVerticle.ADDRESS,
                         new JsonObject().put("action", "flash").put("nbPicture", nbPicture));
-                exec = Runtime.getRuntime().exec("streamer -c /dev/video1 -s 2304x1536 -f jpeg -o " + photoPath
+                exec = Runtime.getRuntime().exec("streamer -c "+config().getString("webCam", "/dev/video0")+" -s 2304x1536 -f jpeg -o " + photoPath
                         + "-photo-" + nbPicture + ".jpeg");
                 exec.waitFor();
                 Integer nextNbPicture = nbPicture - 1;
