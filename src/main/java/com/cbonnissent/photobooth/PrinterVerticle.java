@@ -26,7 +26,7 @@ public class PrinterVerticle extends AbstractVerticle {
     public void start(Future<Void> future) {
         vertx.eventBus().<JsonObject>consumer(MainVerticle.ADDRESS).handler(message -> {
             if (message.body().getValue("action").equals("print") && message.body().getValue("path") != null) {
-                print(message.body().getValue("path").toString());
+                //print(message.body().getValue("path").toString());
             }
         });
     }

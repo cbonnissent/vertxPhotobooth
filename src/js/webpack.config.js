@@ -1,4 +1,6 @@
-const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
 	module: {
@@ -26,6 +28,13 @@ module.exports = {
 						loader: 'sass-loader'
 					}
 				]
+			},
+			{
+				test: /\.(png|jpg)$/,
+				loader: 'file-loader',
+				options: {
+					name: '[path][name].[ext]'
+				}
 			}
 		]
 	},
@@ -36,8 +45,19 @@ module.exports = {
 
 	output: {
 		filename: '[name].js',
-		path: path.resolve(__dirname, '../main/resources/webroot/dist/')
+		path: path.resolve(__dirname, '../main/resources/webroot/')
 	},
+
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: 'index.html',
+		  title: 'PhotoBooth',
+		  filename: 'index.html'
+		}),
+		new CopyWebpackPlugin([
+			{from:'./assets/',to:'assets'} 
+		])
+	  ],
 
 	mode: 'development'
 };
